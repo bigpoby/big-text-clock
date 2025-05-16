@@ -1,15 +1,15 @@
 const digitPatterns = {
-    '0': [[], [], [], [], []],
-    '1': [[1], [1], [1], [1], [1]],
-    '2': [[], [], [], [], []],
-    '3': [[], [], [], [], []],
-    '4': [[], [], [], [], []],
-    '5': [[], [], [], [], []],
-    '6': [[], [], [], [], []],
-    '7': [[], [], [], [], []],
-    '8': [[], [], [], [], []],
-    '9': [[], [], [], [], []],
-    ':': [[], [], [], [], []]
+    '0': [[1, 1, 1], [1, 0, 1], [1, 0, 1], [1, 0, 1], [1, 1, 1]],
+    '1': [[0, 1, 0], [1, 1, 0], [0, 1, 0], [0, 1, 0], [1, 1, 1]],
+    '2': [[1, 1, 1], [0, 0, 1], [1, 1, 1], [1, 0, 0], [1, 1, 1]],
+    '3': [[1, 1, 1], [0, 0, 1], [1, 1, 1], [0, 0, 1], [1, 1, 1]],
+    '4': [[1, 0, 1], [1, 0, 1], [1, 1, 1], [0, 0, 1], [0, 0, 1]],
+    '5': [[1, 1, 1], [1, 0, 0], [1, 1, 1], [0, 0, 1], [1, 1, 1]],
+    '6': [[1, 1, 1], [1, 0, 0], [1, 1, 1], [1, 0, 1], [1, 1, 1]],
+    '7': [[1, 1, 1], [0, 0, 1], [0, 1, 0], [1, 0, 0], [1, 0, 0]],
+    '8': [[1, 1, 1], [1, 0, 1], [1, 1, 1], [1, 0, 1], [1, 1, 1]],
+    '9': [[1, 1, 1], [1, 0, 1], [1, 1, 1], [0, 0, 1], [1, 1, 1]],
+    ':': [[0, 0, 0], [0, 1, 0], [0, 0, 0], [0, 1, 0], [0, 0, 0]]
 };
 
 // 생성자 함수를 이용해 Bit-Text 생성
@@ -38,7 +38,7 @@ BigNumber.prototype.render = function (text, cellSize = 20, fillColor = '#333') 
                 td.style.width = cellSize + 'px';
                 td.style.height = cellSize + 'px';
                 td.style.border = '1px solid #eee';
-                td.style.background = '#000';
+                td.style.background = cell ? '#00F' : '#FF0';
                 tr.appendChild(td);
             });
             table.appendChild(tr);
@@ -53,7 +53,7 @@ BigNumber.prototype.render = function (text, cellSize = 20, fillColor = '#333') 
 // 숫자 출력
 
 const bigNumber = new BigNumber(digitPatterns);
-const tables = bigNumber.render('1');
+const tables = bigNumber.render('1234567890;');
 const output = document.getElementById('output');
 output.innerHTML = '';
 tables.forEach(table => output.appendChild(table));
